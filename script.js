@@ -91,8 +91,8 @@ let userData = {
 
 const playSong = (id) => {
     const song = userData?.songs.find((song) => song.id === id);
-    audio.src = propertyArray.song.src;
-    audio.title = propertyArray.song.title;
+    audio.src = song.src;
+    audio.title = song.title;
 };
 
 
