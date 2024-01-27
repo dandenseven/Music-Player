@@ -107,7 +107,6 @@ const playSong = (id) => {
 };
 
 
-
 const renderSongs = (array) => {
     const songsHTML = array.map(song => {
         return `
@@ -131,6 +130,10 @@ const renderSongs = (array) => {
     }).join("")
 
     playlistSongs.innerHTML = songsHTML;
+
+
+    playButton.addEventListener("click", () => {});
+
 
     renderSongs(userData?.songs);
 
