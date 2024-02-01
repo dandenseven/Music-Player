@@ -124,7 +124,7 @@ const playNextSong = () => {
         const currentSongIndex = getCurrentSongIndex();
         const nextSong = userData?.songs[currentSongIndex + 1];
         playSong(nextSong.id);
-      }
+    }
 };
 
 const playPreviousSong = () => {
@@ -136,8 +136,21 @@ const playPreviousSong = () => {
         playSong(previousSong.id);
 
     }
-  };
+};
 
+const shuffle = () => {
+    userData?.songs.sort(() => Math.random() - 0.5);
+    userData.currentSong = null;
+    userData.songCurrentTime = 0;
+    renderSongs(userData?.songs);
+    pauseSong();
+    setPlayerDisplay();
+    setPlayButtonAccessibleText();
+
+};
+
+
+ 
 const setPlayerDisplay = () => {
     const playingSong = document.getElementById("player-song-title")
     const songArtist = document.getElementById("player-song-artist")
@@ -215,6 +228,9 @@ pauseButton.addEventListener("click", pauseSong);
 nextButton.addEventListener("click", playNextSong);
 
 previousButton.addEventListener("click", playPreviousSong);
+
+shuffleButton.addEventListener("click",shuffle);
+
 
 userData?.songs.sort((a,b) => {
     if (a.title < b.title) {
